@@ -17,9 +17,38 @@ class App extends Component {
     return `Was not found within ${counter} searches`;
   }
 
+  binarySearch(arr, value, start, end, counter) {
+    console.log(arr)
+    var start = start === undefined ? 0 :start;
+    var end = end === undefined ? arr.length : end;
+    counter = counter + 1;
+
+    if (start > end) {
+      return `Item not found within ${counter} searches`;
+    }
+
+    const index = Math.floor((start + end) / 2);
+    const item = arr[index];
+
+    console.log(arr[start], arr[end]);
+    console.log(item)
+    console.log(counter)
+    if (item == value) {
+      return counter;
+    }
+    else if (item < value) {
+      return this.binarySearch(arr, value, index + 1, end, counter);
+    }
+    else if (item > value) {
+      return this.binarySearch(arr, value, start, index - 1, counter);
+    }
+  }
+
   handleSubmit = (e, counter) => {
     e.preventDefault();
-    let result = this.linearSearch(this.state.dataset, e.target.elements[0].value, counter)
+    // let result = this.linearSearch(this.state.dataset, e.target.elements[0].value, counter)
+    let arr = this.state.dataset.sort((a, b) => a - b);
+    let result = this.binarySearch(arr, e.target.elements[0].value, undefined, undefined, counter = 0)
     this.setState({
       results: result
     })
