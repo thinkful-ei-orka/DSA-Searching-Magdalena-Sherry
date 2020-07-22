@@ -131,4 +131,22 @@ function bfs(tree, values = []) {
   return values;
 }
 
-console.log(bfs(theEnterprise));
+//console.log(bfs(theEnterprise));
+
+//7. Max profit
+
+function maxProfit(prices) {
+  let low = null;
+  let high = null;
+
+  for (let i=0; i < prices.length; i++) {
+    if (!low || prices[i] < low)
+      low = prices[i]; 
+    if (prices[i] > high)
+      high = prices[i];
+  }
+
+  return `The max profit you could make would be $${high - low}`;
+}
+
+console.log(maxProfit([128, 97, 121, 123, 98, 97, 105]));
