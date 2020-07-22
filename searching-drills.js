@@ -1,4 +1,5 @@
 const BinarySearchTree = require('./BinarySearchTree');
+const Queue = require('./Queue');
 
 //1. How many searches?
 
@@ -76,24 +77,51 @@ function binarySearch(array, value, start, end, titles, title) {
 
 //5. Implement differenet tree traversals
 
-let BST = new BinarySearchTree();
+// let BST = new BinarySearchTree();
 
-BST.insertion(25);
-BST.insertion(15);
-BST.insertion(50);
-BST.insertion(10);
-BST.insertion(24);
-BST.insertion(35);
-BST.insertion(70);
-BST.insertion(4);
-BST.insertion(12);
-BST.insertion(18);
-BST.insertion(31);
-BST.insertion(44);
-BST.insertion(66);
-BST.insertion(90);
-BST.insertion(22);
+// BST.insertion(25);
+// BST.insertion(15);
+// BST.insertion(50);
+// BST.insertion(10);
+// BST.insertion(24);
+// BST.insertion(35);
+// BST.insertion(70);
+// BST.insertion(4);
+// BST.insertion(12);
+// BST.insertion(18);
+// BST.insertion(31);
+// BST.insertion(44);
+// BST.insertion(66);
+// BST.insertion(90);
+// BST.insertion(22);
 
-BST.inOrder();
-BST.preOrder();
-BST.postOrder();
+// BST.inOrder();
+// BST.preOrder();
+// BST.postOrder();
+
+let theEnterprise = new BinarySearchTree();
+
+theEnterprise.insertion(50, 'Captain Picard');
+console.log(theEnterprise);
+theEnterprise.insertion(40, 'Commander Riker');
+console.log(theEnterprise);
+theEnterprise.insertion(60, 'Commander Data');
+console.log(theEnterprise);
+
+function bfs(tree, values = []) {
+  const queue = new Queue();
+  const node = tree.root;
+  queue.enqueue(node);
+  while (queue.length) {
+    const node = queue.dequeue(); //remove from the queue
+    values.push(node.value); //add that value from the queue to an arr
+
+    if (node.left) {
+      queue.enqueue(node.left); //add left child to the queue
+    }
+    if (node.right) {
+      queue.enqueue(node.right); //add right child to the queue
+    }
+  }
+  return values;
+}
