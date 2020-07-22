@@ -153,7 +153,6 @@ class BinarySearchTree {
     }
     console.log(this.key);
   }
-
 }
 
 module.exports = BinarySearchTree;

@@ -1,6 +1,7 @@
 const BinarySearchTree = require('./BinarySearchTree');
 const Queue = require('./Queue');
 
+
 //1. How many searches?
 
 // 3, 5, 6, 8, 11, 12, 14, 15, 17, 18 -- length: 10 / 2 => [5]
@@ -102,17 +103,21 @@ function binarySearch(array, value, start, end, titles, title) {
 let theEnterprise = new BinarySearchTree();
 
 theEnterprise.insertion(50, 'Captain Picard');
-console.log(theEnterprise);
 theEnterprise.insertion(40, 'Commander Riker');
-console.log(theEnterprise);
+theEnterprise.insertion(30, 'Lt. Cmdr. Worf');
+theEnterprise.insertion(45, 'Lt. Cmde. LaForge');
+theEnterprise.insertion(25, 'Lieutenant secutiry-officer');
 theEnterprise.insertion(60, 'Commander Data');
-console.log(theEnterprise);
+theEnterprise.insertion(70, 'Lt. Cmdr. Crusher');
+theEnterprise.insertion(65, 'Lieutenant Selar');
+
+// console.log(theEnterprise);
 
 function bfs(tree, values = []) {
   const queue = new Queue();
-  const node = tree.root;
+  const node = tree;
   queue.enqueue(node);
-  while (queue.length) {
+  while (queue.first !== null) {
     const node = queue.dequeue(); //remove from the queue
     values.push(node.value); //add that value from the queue to an arr
 
@@ -125,3 +130,5 @@ function bfs(tree, values = []) {
   }
   return values;
 }
+
+console.log(bfs(theEnterprise));
