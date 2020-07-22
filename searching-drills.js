@@ -1,3 +1,5 @@
+const BinarySearchTree = require('./BinarySearchTree');
+
 //1. How many searches?
 
 // 3, 5, 6, 8, 11, 12, 14, 15, 17, 18 -- length: 10 / 2 => [5]
@@ -66,8 +68,32 @@ function binarySearch(array, value, start, end, titles, title) {
   }
 };
 
-console.log(binarySearch(deweyNums, value, undefined, undefined, titles, title));
+// console.log(binarySearch(deweyNums, value, undefined, undefined, titles, title));
 
 //4. 
 // a) postorder traveral: 14, 19, 15, 27, 25, 79, 90, 91, 89, 35
 // b) pre-order: 8, 6, 5, 7, 10, 9, 11
+
+//5. Implement differenet tree traversals
+
+let BST = new BinarySearchTree();
+
+BST.insertion(25);
+BST.insertion(15);
+BST.insertion(50);
+BST.insertion(10);
+BST.insertion(24);
+BST.insertion(35);
+BST.insertion(70);
+BST.insertion(4);
+BST.insertion(12);
+BST.insertion(18);
+BST.insertion(31);
+BST.insertion(44);
+BST.insertion(66);
+BST.insertion(90);
+BST.insertion(22);
+
+BST.inOrder();
+BST.preOrder();
+BST.postOrder();
