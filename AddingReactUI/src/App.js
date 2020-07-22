@@ -11,14 +11,14 @@ class App extends Component {
   }
 
   handleSubmit = (e) => {
-    console.log(e.target.value);
-    this.preventDefault();
+    console.log(e.target.elements[0].value);
+    e.preventDefault();
   }
 
   render() {
     return (
       <main className='App'>
-        <form onClick={(e) => this.handleSubmit(e.target.value)} className='search-field'>
+        <form onSubmit={(e) => this.handleSubmit(e)} className='search-field'>
           <input type='number' className='search-input'></input>
           <button type='submit'>Search</button>
         </form>
